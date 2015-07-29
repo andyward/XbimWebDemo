@@ -5,6 +5,12 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XbimDemoWebApp", "XbimDemoWebApp\XbimDemoWebApp.csproj", "{5DD1D374-715C-44DF-8BC7-24FF1A1AE9AE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3E49283E-16A0-4013-A293-08B01DCFE01E}"
+	ProjectSection(SolutionItems) = preProject
+		License.md = License.md
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
