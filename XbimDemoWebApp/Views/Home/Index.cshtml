@@ -1,0 +1,48 @@
+﻿@model XbimDemoWebApp.Models.XbimEnvironment
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Xbim</h1>
+    <p class="lead"><strong>Environment: </strong>@Model.Environment</p>
+    <p class="lead"><strong>Server: </strong>@HttpContext.Current.Request.ServerVariables["SERVER_SOFTWARE"]</p>
+    
+</div>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Assemblies.First().Assembly)</th>
+                        <th>@Html.DisplayNameFor(model => model.Assemblies.First().Architecture)</th>
+                        <th>@Html.DisplayNameFor(model => model.Assemblies.First().AssemblyVersion)</th>
+                        <th>@Html.DisplayNameFor(model => model.Assemblies.First().FileVersion)</th>
+                        <th>@Html.DisplayNameFor(model => model.Assemblies.First().ProductVersion)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Assemblies)
+                    {
+                        <tr>
+                            <td>
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h4 class="media-heading">@Html.DisplayFor(modelItem => item.Assembly)</h4>
+                                        <span class="text-muted">@Html.DisplayFor(modelItem => item.CodeBase)</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-nowrap">@Html.DisplayFor(modelItem => item.Architecture)</td>
+                            <td class="text-nowrap">@Html.DisplayFor(modelItem => item.AssemblyVersion)</td>
+                            <td class="text-nowrap">@Html.DisplayFor(modelItem => item.FileVersion)</td>
+                            <td class="text-nowrap">@Html.DisplayFor(modelItem => item.ProductVersion)</td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
