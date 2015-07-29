@@ -1,0 +1,28 @@
+﻿@model XbimDemoWebApp.Models.FederatedBimModel
+
+@{
+    ViewBag.Title = "View Federation";
+}
+@section scripts{
+    <script src="~/Scripts/xbim-viewer.debug.bundle.js"></script>
+    <script type="text/javascript">
+        var viewer = new xViewer('viewer');
+        @foreach(var item in Model.Models)
+        {
+            @:viewer.load('@Url.Action("GeometryFile","Home", new { wexBim = item.WexBimFile})');
+        }
+        
+        viewer.start();
+    </script>
+
+}
+
+<h2>Viewing @Model.ModelName</h2>
+
+<div id="content" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <canvas id="viewer" height="400" style="width:100%"></canvas>
+        </div>
+    </div>
+</div>
