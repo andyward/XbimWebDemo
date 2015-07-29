@@ -1,5 +1,5 @@
 # XbimWebDemo
-Simple demonstration of xBim IFC and Geometry [].NET libraries](http://github/XbimTeam/) running under a web server, using a standard ASP.NET MVC5 template.
+Simple demonstration of xBim IFC and Geometry [.NET libraries](http://github.com/XbimTeam/) running under a web server, using a standard ASP.NET MVC5 template.
 
 This is a sample application - so it's not meant to be production quality - just enough to demonstrate how to IFC files are parsed, 
 their geometry converted and how a basic WebGL viewer can be invoked. The application also demonstrates how to federate geometry,
