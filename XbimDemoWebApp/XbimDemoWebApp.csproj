@@ -207,6 +207,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BimModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\XbimEnvironment.cs" />
@@ -225,6 +226,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="App_Data\OneWallTwoWindows.ifc" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\gl-matrix.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -235,6 +237,12 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\webgl-utils.min.js" />
+    <Content Include="Scripts\xbim-browser.js" />
+    <Content Include="Scripts\xbim-browser.min.js" />
+    <Content Include="Scripts\xbim-viewer.debug.bundle.js" />
+    <Content Include="Scripts\xbim-viewer.min.bundle.js" />
+    <Content Include="Scripts\xbim-viewer.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -269,7 +277,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Open.cshtml" />
+    <Content Include="Views\Home\ViewModel.cshtml" />
+    <Content Include="Views\Home\ViewFederation.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
