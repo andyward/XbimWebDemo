@@ -4,10 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Xbim.Common;
+using Xbim.Ifc;
 using Xbim.IO;
 using Xbim.ModelGeometry.Scene;
 using XbimDemoWebApp.Models;
-using XbimGeometry.Interfaces;
+
 
 namespace XbimDemoWebApp.Controllers
 {
@@ -83,13 +85,16 @@ namespace XbimDemoWebApp.Controllers
                 Clean(xbimFileName, geometryFileName);
             }
 
-            using (var model = new XbimModel())
+            
+            var modelToOpen = Cached(xbimFileName) ? xbimFileName : ifcModel;
+            //Parse IFC to xbim
+            using (var model = IfcStore.Open(modelToOpen))
             {
                 if (!Cached(xbimFileName))
                 {
-                    //Parse IFC to xbim
-                    model.CreateFrom(ifcModel, xbimFileName, null, true);
+                    model.SaveAs(xbimFileName, StorageType.Xbim);
                 }
+                    
                 // Generate Geometry
                 BuildGeometry(model, geometryFileName);
             }
@@ -127,28 +132,28 @@ namespace XbimDemoWebApp.Controllers
 
 
         // NOTE: I don't recommend you do this under a web server due to the use of unmanaged code and the fact the operation is very expensive in terms of resources
-        private void BuildGeometry(XbimModel model, string geometryFileName)
+        private void BuildGeometry(IModel model, string geometryFileName)
         {
             if (Cached(geometryFileName))
             {
                 return;
             }
             var m3DModelContext = new Xbim3DModelContext(model);
-            m3DModelContext.CreateContext(XbimGeometryType.PolyhedronBinary);
+            m3DModelContext.CreateContext();
 
-            ExportGeometryData(geometryFileName, m3DModelContext);
+            ExportGeometryData(geometryFileName, model);
         }
 
-        private static void ExportGeometryData(string geometryFileName, Xbim3DModelContext m3DModelContext)
+        private static void ExportGeometryData(string geometryFileName, IModel model)
         {
-            using (var geometryStream = new FileStream(geometryFileName, FileMode.Create))
+            using (var wexBimFileStream = new FileStream(geometryFileName, FileMode.Create))
             {
-                using (var bw = new BinaryWriter(geometryStream))
+                using (var writer = new BinaryWriter(wexBimFileStream))
                 {
-                    m3DModelContext.Write(bw);
+                    model.SaveAsWexBim(writer);
 
-                    bw.Close();
-                    geometryStream.Close();
+                    writer.Close();
+                    wexBimFileStream.Close();
                 }
             }
         }
