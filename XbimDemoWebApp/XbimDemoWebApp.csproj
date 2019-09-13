@@ -467,10 +467,10 @@
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
-  <Import Project="..\packages\Xbim.Geometry.Engine.Interop.5.1.254\build\net47\Xbim.Geometry.Engine.Interop.targets" Condition="Exists('..\packages\Xbim.Geometry.Engine.Interop.5.1.254\build\net47\Xbim.Geometry.Engine.Interop.targets')" />
   <PropertyGroup>
     <XbimCustomBinPath>native\</XbimCustomBinPath>
   </PropertyGroup>
+  <Import Project="..\packages\Xbim.Geometry.Engine.Interop.5.1.254\build\net47\Xbim.Geometry.Engine.Interop.targets" Condition="Exists('..\packages\Xbim.Geometry.Engine.Interop.5.1.254\build\net47\Xbim.Geometry.Engine.Interop.targets')" />
   <Target Name="PostXbim">
     <ItemGroup Condition=" '$(Platform)' == 'x86'">
       <GeometryEngineFiles Include="$(OutputPath)$(XbimCustomBinPath)Xbim.Geometry.Engine32.dll">
