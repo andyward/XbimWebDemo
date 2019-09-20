@@ -9,29 +9,25 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Xbim Test Web App", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("View Model", "ViewModel", "Home", new { name = "OneWallTwoWindows.ifc" }, null)</li>
-                    <li>
-                        <a href="@Url.Action("ViewFederation", "Home")?names=Duplex_A.ifc&names=Duplex_MEP.ifc">View Federation</a>
-                    </li>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        @Html.ActionLink("Xbim Test Web App", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+        <div class="navbar-collapse collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("View Model", "ViewModel", "Home", new { name = "OneWallTwoWindows.ifc" }, new { @class = "nav-link" })</li>
+                <li class="nav-item">
+                    <a href="@Url.Action("ViewFederation", "Home")?names=Duplex_A.ifc&names=Duplex_MEP.ifc" class="nav-link">View Federation</a>
+                </li>
+
+            </ul>
+            @Html.Partial("_LoginPartial")
         </div>
-    </div>
+
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
